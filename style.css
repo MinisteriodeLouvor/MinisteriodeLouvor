@@ -116,14 +116,47 @@ div.a {
     text-align: left;
 }
 
-
-
-
-
-
-
-
-
+#form
+{
+    width: 50%;
+    height: 500px;
+    background: #4b3c2a;
+    color: white;
+    text-align: center;
+}
+#pdf
+{
+    text-align: center;
+    color: white;
+    margin-left: 10;
+    font-size: 50;
+}
+#parashiot
+{
+    text-align: center;
+    font-size: 25;
+}
+#parashiot li
+{
+    color: white;
+    text-align: initial;    
+}
+#parashiot li a
+{
+    color: white;
+    text-decoration: none;
+}
+#parashiot p
+{
+    font-size: 35;
+    background: #3e2910;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 5px;
+    
+    
+}
 
 
 
