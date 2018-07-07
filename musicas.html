@@ -6,11 +6,23 @@
         <title>Ministério de Louvor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-       
         <link rel="icon" type="image/gif" href="icon.png"/>
+        <style>
+                #playlist{
+                        list-style: none;
+                }
+                #playlist li a{
+                        color: white;
+                        text-decoration: none; 
+                }
+                #playlist li.current-song
+                {
+                        color: green;
+                }
+        </style>
 </head>
 <body>
-  
+ 
 <div id="nav1">
 <a href="index.html"><h1>Ministério de Louvor</h1></a>
     <ul>
@@ -18,29 +30,53 @@
         <li><a href="musicas.html">Músicas</a></li>
          <li><a href="videos.html">Videos</a></li>
          <li><a href="parashiot.html">Parashiôt</a></li>
-         <li><a href="contato.html">Contato</a></li>
+         
          <li><a href="imeva.html">Imeva</a></li>
     </ul>
 </div>   
-<div id="main-content">
-               
+<div id="main-content">   <br>
+                <audio src=""controls id="audioPlayer"> 
+                </audio>
+                <ul id="playlist">
+                     <li class="current-song"><a href="ashuv eleicha.mp3"><i>Ashuv Eleicha</i></a></li>
+                     <li><a href="Ashrei HaIsh אשרי האיש.mp3"><i>Ashrei HaIsh</i></a></li>
+                     <li><a href="Ad Ana עד אנה.mp3"><i>Ad Ana</i></a></li>  
+                     <li><a href="Shane et Chayai.mp3"><i>Shane et Chayai</i></a></li> 
+                     <li><a href="Yeshua El yakar.mp3"><i>Yeshua El Yakar</i></a></li> 
+                     <li><a href="Sh'ma Yisrael by King of Kings Community Jerusalem Worship Team.mp3"><i>Sh'ma Yisrael</i></a></li> 
+                </ul>
+                <script src="https://code.jquery.com/jquery-2.2.0.js">
+                </script>
+                <script>
+                        audioPlayer ();
+                        function audioPlayer()
+                        {
+                                var currentSong= 0;
+                                $("#audioPlayer")[0].src = $("#playlist li a")
+                                [0];
+                                $("#audioPlayer")[0].play();
+                                $("#playlist li a").click(function(e){
+                                        e.preventDefault();
+                                        $("#audioPlayer")[0].src = this;
+                                        $("#audioPlayer")[0].play();
+                                        $("#playlist li").removeClass("current-song");
+                                          currentSong = $(this).parent().index();
+                                          $(this).parent().addClass("current-song");
+                                });
 
-        <h1>Ashuv Eleicha by Yaron</h1><br>
-        <audio controls>
-             <source src="ashuv eleicha.mp3" type="audio/mpeg">
-        </audio>
-        <br>
-        <h1>Ashrei HaIsh by Miqedem</h1><br>
-        <audio controls>
-             <source src="Ashrei HaIsh אשרי האיש.mp3" type="audio/mpeg">
-        </audio>
-        <br>
-        <h1>Ad Ana by Miqedem</h1><br>
-        <audio controls>
-             <source src="Ad Ana עד אנה.mp3" type="audio/mpeg">
-        </audio>
-
-
+                                $("#audioPlayer")[0].addEventListener("ended", function(){
+                                        currentSong++;
+                                        if(currentSong == $("#playlist li a").length)
+                                            currentSong = 0;
+                                        $("#playlist li").removeClass("current-song");
+                                        $("#playlist li:eq("+currentSong+")").addClass("current-song");
+                                        $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+                                        $("#audioPlayer")[0].play();   
+                                        
+                                });
+                        }
+                </script>
+                
 </div>
 
 

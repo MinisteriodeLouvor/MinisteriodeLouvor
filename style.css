@@ -154,9 +154,10 @@ div.a {
     height: 80px;
     line-height: 80px;
     border-radius: 5px;
-    
-    
 }
-
+#playlist .current-song
+{
+    color: aqua;
+}
 
 
